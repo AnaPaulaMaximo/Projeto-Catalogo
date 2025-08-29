@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, SafeAreaView } from 'react-native';
 import catalogoData from '../catalogo.json';
 
-// Define a tipagem para os dados do catálogo
+// Define a tipagem para garantir a consistência dos dados
 interface ItemCatalogo {
   id: number;
   titulo: string;
@@ -12,64 +12,73 @@ interface ItemCatalogo {
 
 export default function CatalogoScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.tituloPrincipal}>Meus Filmes Favoritos</Text>
-      
-      {/* Utiliza o método .map() para percorrer os dados e renderizar os cards */}
-      {catalogoData.map((item: ItemCatalogo) => (
-        <View key={item.id} style={styles.card}>
-          <Text style={styles.cardTitulo}>{item.titulo}</Text>
-          <Text style={styles.cardSubtitulo}>{item.subtitulo}</Text>
-          <Text style={styles.cardAno}>{item.ano}</Text>
-        </View>
-      ))}
-    </View>
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle="light-content" backgroundColor="#1a1a2e" />
+      <View style={styles.container}>
+        <Text style={styles.tituloPrincipal}>Meus Filmes e Series Favoritos</Text>
+        
+        {/* Mapeia os dados do JSON para renderizar os cards */}
+        {catalogoData.map((item: ItemCatalogo) => (
+          <View key={item.id} style={styles.card}>
+            <Text style={styles.cardTitulo}>{item.titulo}</Text>
+            <Text style={styles.cardSubtitulo}>{item.subtitulo}</Text>
+            <Text style={styles.cardAno}>{item.ano}</Text>
+          </View>
+        ))}
+      </View>
+    </SafeAreaView>
   );
 }
 
 // Estilização com StyleSheet
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#1a1a2e',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
-    alignItems: 'center',
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 40,
   },
   tituloPrincipal: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#333',
+    color: '#e145e9ff',
+    textAlign: 'center',
+    marginBottom: 30,
+    textShadowColor: 'rgba(0, 0, 0, 0.2)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 3,
   },
   card: {
-    width: '100%',
-    padding: 15,
-    marginVertical: 8,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ddd',
+    backgroundColor: '#2e2e4a',
+    borderRadius: 15,
+    padding: 20,
+    marginVertical: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 8,
+    borderLeftWidth: 5,
+    borderLeftColor: '#e145e9ff',
   },
   cardTitulo: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#0056b3',
-    marginBottom: 5,
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#fff',
   },
   cardSubtitulo: {
     fontSize: 16,
-    color: '#666',
-    fontStyle: 'italic',
+    color: '#a8a8c8',
+    marginTop: 5,
   },
   cardAno: {
-    fontSize: 14,
-    color: '#444',
-    marginTop: 5,
+    fontSize: 16,
+    color: '#e145e9ff',
     textAlign: 'right',
+    marginTop: 10,
+    fontWeight: 'bold',
   },
 });

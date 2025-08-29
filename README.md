@@ -1,50 +1,69 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+-----
 
-## Get started
+# 📱 Meu Catálogo Pessoal
 
-1. Install dependencies
+Este é um aplicativo móvel simples, desenvolvido com **React Native**, que exibe uma lista de itens de uma coleção pessoal. O projeto serve como um catálogo de filmes, com cada item exibido em um "card" estilizado, carregado a partir de um arquivo de dados local.
 
-   ```bash
-   npm install
-   ```
+## 🚀 Tecnologias Utilizadas
 
-2. Start the app
+  - **React Native**: Framework para construir aplicativos móveis nativos usando JavaScript e React.
+  - **Expo**: Ferramenta que simplifica o desenvolvimento em React Native, facilitando a configuração e o teste do aplicativo.
+  - **TypeScript**: Uma camada sobre o JavaScript que adiciona tipagem estática, garantindo um código mais robusto e fácil de manter.
+  - **Expo Router**: Uma solução de roteamento para Expo que gerencia a navegação e o layout da tela.
 
-   ```bash
-   npx expo start
-   ```
+## ⚙️ Como o Projeto Funciona
 
-In the output, you'll find options to open the app in a
+O projeto segue uma arquitetura de componentes clara e modular.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+  - **Fonte de Dados (`catalogo.json`)**: Na raiz do projeto, um arquivo `.json` armazena os dados do catálogo (filmes, livros, etc.). Cada item é um objeto com `id`, `titulo`, `subtitulo` e `ano`. Isso permite que o aplicativo seja facilmente atualizado com novos dados sem alterar a lógica do código.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+  - **Componente de Tela (`CatalogoScreen.tsx`)**: Toda a lógica e a interface do catálogo estão encapsuladas neste componente. Ele é responsável por:
 
-## Get a fresh project
+    1.  Importar os dados diretamente do `catalogo.json`.
+    2.  Utilizar o método `.map()` do JavaScript para percorrer o array de dados.
+    3.  Para cada item no array, renderizar um componente `View` estilizado como um "card", exibindo o título, subtítulo e ano.
 
-When you're ready, run:
+  - **Estilização**: Toda a estilização do aplicativo é feita usando `StyleSheet` dentro do `CatalogoScreen.tsx`, com o layout principal organizado usando **Flexbox**. O design é moderno, com um tema escuro e elementos flutuantes que dão profundidade.
 
-```bash
-npm run reset-project
-```
+  - **Estrutura do Projeto**: A tela principal (`app/index.tsx`) simplesmente importa e renderiza o `CatalogoScreen.tsx`, mantendo a separação de responsabilidades. O `app/_layout.tsx` é usado para configurar a navegação e remover o cabeçalho padrão, garantindo que o aplicativo exiba apenas o catálogo.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🖼️ Preview
 
-## Learn more
+*(Opcional: Adicione aqui uma imagem, GIF ou vídeo do seu aplicativo em funcionamento para demonstrar o resultado final.)*
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🏃 Como Rodar o Projeto
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1.  **Clone o Repositório:**
 
-## Join the community
+    ```bash
+    git clone https://github.com/AnaPaulaMaximo/Projeto-Catalogo.git
+    cd nome-do-seu-repositorio
+    ```
 
-Join our community of developers creating universal apps.
+2.  **Instale as Dependências:**
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+    ```bash
+    npm install
+    ```
+
+    ou
+
+    ```bash
+    yarn install
+    ```
+
+3.  **Execute o Aplicativo:**
+
+    ```bash
+    npx expo start
+    ```
+
+4.  **Inicie no seu Dispositivo:**
+
+      * Siga as instruções no terminal para escanear o código QR com o aplicativo **Expo Go** no seu celular ou tablet.
+      * Você também pode rodar o aplicativo em um simulador (iOS) ou emulador (Android) conectado.
+
+-----
+
+Desenvolvido por: Ana Paula Maximo
